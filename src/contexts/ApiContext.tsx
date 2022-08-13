@@ -12,6 +12,9 @@ type Context = {
   setSpecificPokemon?: (value: any) => void;
   count: number;
   eachPokemon: string;
+  setSearch: (value: string) => void;
+  search: string;
+  filtered: Object[]
 };
 
 const ApiContext = createContext<Context | null>(null);
@@ -23,8 +26,16 @@ export const ApiProvider = ({ children }: Props) => {
 
   const [shortPokemonsList, setShortPokemonsList] = useState([]);
   const [allPokemonsList, setAllPokemonsList] = useState([] as any);
+  const [search, setSearch] = useState("");
 
   const [currentPokemon, setCurrentPokemon] = useState([] as any);
+
+  const searchByName = search && search.toLowerCase();
+  const filtered = !allPokemonsList || !searchByName
+    ? allPokemonsList
+    : allPokemonsList.filter(({ name }: any) =>
+      name.toLowerCase().includes(searchByName)
+    );
 
   const PromiseListPokemons = async () => {
     setAllPokemonsList([]);
@@ -41,7 +52,7 @@ export const ApiProvider = ({ children }: Props) => {
   };
 
   const PromiseShortPokemons = async () => {
-    const perPage = 20;
+    const perPage = 10;
     const offset = perPage * (currPage - 1);
 
     const getPokemons = `http://localhost:5050/pokemons?perPage=${perPage}&offset=${offset}`;
@@ -50,18 +61,16 @@ export const ApiProvider = ({ children }: Props) => {
       .then((response) => response.json())
       .then((json) => {
         setShortPokemonsList(json.results);
-        setCount(Math.round(json.count / 20));
+        setCount(Math.round(json.count / 10));
       });
   };
 
   useEffect(() => {
     if (!!shortPokemonsList) PromiseListPokemons();
-    // eslint-disable-next-line
   }, [shortPokemonsList]);
 
   useEffect(() => {
     if (!!currPage) PromiseShortPokemons();
-    // eslint-disable-next-line
   }, [currPage]);
 
   return (
@@ -73,6 +82,9 @@ export const ApiProvider = ({ children }: Props) => {
         setCurrPage,
         count,
         eachPokemon,
+        setSearch,
+        search,
+        filtered
       }}
     >
       {children}

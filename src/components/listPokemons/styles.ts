@@ -1,42 +1,81 @@
 import styled from "styled-components";
 
-const Container = styled.div`
+export const Container = styled.div`
   * {
     color: ${({ theme }) => theme.colors.font};
   }
 `;
-const Contents = styled.div`
-  display: grid;
+export const Contents = styled.div`
+  display: flex;
+  background: #FFF;
+  box-shadow: 0px 5px 5px 4px rgba(0,0,0,0.56);
+  -webkit-box-shadow: 0px 5px 5px 4px rgba(0,0,0,0.56);
+  -moz-box-shadow: 0px 5px 5px 4px rgba(0,0,0,0.56);
+
+  @media (min-width: 472px) {
+    
+  }
+`;
+
+export const LeftContent = styled.div`
+  width: 100%;
+  max-width: 22rem;
+  min-width: 240px;
+`;
+
+export const RightContent = styled.div`
+ display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
-  margin: 0 20rem;
+
 
   @media (min-width: 1920px) {
     margin: 0 20rem;
   }
   @media (max-width: 1600px) {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     grid-template-columns: repeat(4, 1fr);
   }
-  @media (max-width: 1100px) {
-    margin: 0 auto;
-    width: 90%;
+  @media (max-width: 1300px) {
+    width: 100%;
     grid-template-columns: repeat(3, 1fr);
   }
-  @media (max-width: 780px) {
-    margin: 0 auto;
-    width: 90%;
+  @media (max-width: 968px) {
+    width: 100%;
     grid-template-columns: repeat(2, 1fr);
   }
-  @media (max-width: 600px) {
-    width: 95%;
+  @media (max-width: 714px) {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr;
-    margin: 0 auto;
   }
 `;
-const ContainerList = styled.div`
+
+export const RightContainer = styled.div`
+`;
+
+export const TitleCount = styled.div`
+  margin-block: 55px;
+  
+  svg{
+    width: 40px;
+    height: 40px;
+
+    path{
+      width: 40px;
+    }
+  }
+
+  span{
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 150%;
+    color: #4D5053;
+    font-family: "Montserrat", sans-serif;
+  }
+`;
+
+export const ContainerList = styled.div`
   border-radius: 20px;
   padding: 20px 10px;
   background-color: ${({ theme }) => theme.colors.card};
@@ -50,7 +89,7 @@ const ContainerList = styled.div`
    }
 `;
 
-const Div = styled.div`
+export const Div = styled.div`
   width: 100%;
 
   #slide {
@@ -68,7 +107,7 @@ const Div = styled.div`
   }
 `;
 
-const DivTwo = styled.div`
+export const DivTwo = styled.div`
   display: block;
 
   > span {
@@ -114,10 +153,19 @@ const DivTwo = styled.div`
   }
 `;
 
-const Filter = styled.div`
-  display: block;
-  justify-content: center;
-  padding: 20px 0;
+export const Filter = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 74px;
+  margin-block: 52px;
+
+  h4{
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    font-size: 1.4rem;
+    color: #2F3133;
+  }
 
   @media (max-width: 600px) {
     width: 90%;
@@ -134,29 +182,18 @@ const Filter = styled.div`
       position: relative;
     }
     > input {
-      width: 600px;
+      width: 280px;
       border: 1px solid white;
-      border-radius: 10px;
+      border-radius: 15px;
       padding: 10px 40px;
-      border: 2px solid ${({ theme }) => theme.colors.input.text};
-      outline-color: ${({ theme }) => theme.colors.input.text};
+      outline-color: rgba(0,0,0,0.20);
       background-color: ${({ theme }) => theme.colors.input.bg};
     }
   }
 `;
 
-const Pag = styled.div`
+export const Pag = styled.div`
   display: flex;
   justify-content: center;
   padding: 20px 0;
 `;
-
-export const Sty = {
-  Container,
-  Contents,
-  ContainerList,
-  Div,
-  DivTwo,
-  Filter,
-  Pag,
-};

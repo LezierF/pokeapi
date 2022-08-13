@@ -1,10 +1,10 @@
 export const defaultTheme = {
   colors: {
     primary: {
-      solid: "#E2EFDE",
+      solid: "#F8F9FA",
     },
     secondary: {
-      solid: "#AFD0BF",
+      solid: "#C4C4C4",
     },
     card: "#D7DEDC",
     font: "#403D3D",
