@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import reportWebVitals from "./reportWebVitals";
 import { ApiProvider } from "./contexts/ApiContext";
 import { App } from "./pages/App";
 import { ThemeContextProvider } from "./contexts/useTheme";
@@ -19,4 +18,3 @@ root.render(
   </React.StrictMode>
 );
 
-reportWebVitals();
