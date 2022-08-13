@@ -1,39 +1,75 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
-const Container = styled.div`
+export const Container = styled.div`
   height: 140px;
-  max-width: 800px;
+  padding: 35px;
+  background: radial-gradient(circle at bottom, #0a45a4 , #3f9fe4);
   margin: 0 auto;
   position: relative;
 `;
 
-const Divison = styled.div`
-  position: relative;
-  border: 2px solid ${({ theme }) => theme.colors.input.text};
-  border-top: none;
-  background-color: ${({ theme }) => theme.colors.header};
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
-  display: flex;
-  justify-content: center;
 
+const Balance = () => {
+  const balance = keyframes`
+    0%{
+      transform: scale(0.92);
+    }
+    50%{
+      transform: scale(1.2);
+      transform: rotate(10deg);
+    }
+    70%{
+      transform: rotate(-10deg);
+    }
+    0%{
+      transform: scale(0.92);
+      transform: rotate(0deg);
+    }
+  `;
+
+  return balance
+}
+
+
+
+export const HeaderContent = styled.div`
+  position: relative;
+  border-top: none;
+  display: flex;
+  justify-content: space-between;
+  
   > .image {
     > img {
-      max-width: 250px;
+      max-width: 155px;
       max-height: 120px;
     }
   }
 
   > .theme {
-    position: absolute;
     display: flex;
-    align-items: center;
     right: 5%;
     top: 15%;
+    width: 155px;
+    justify-content: center;
+  }
+
+  > .pokeblu{
+    width: 120px;
+    display: flex;
+    justify-content: center;
+    animation:   ${ Balance()} 2.0s  infinite;
+    img{
+      width: 265px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    > .image {
+    > img {
+      max-width: 120px;
+      max-height: 120px;
+    }
+  }
   }
 `;
 
-export const Sty = {
-  Container,
-  Divison,
-};
