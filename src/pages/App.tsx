@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from './home/index'
-import { Content } from "../components/PokemonPerfil/content";
+import { Content } from "../components/pokemonDetail/content";
 
 export const App: React.FC = () => {
   return (
