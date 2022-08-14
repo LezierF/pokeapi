@@ -8,9 +8,10 @@ export const Container = styled.div`
 export const Contents = styled.div`
   display: flex;
   background: #FFF;
+  justify-content: center;
 
-  @media (min-width: 472px) {
-    
+  @media (max-width: 468px) {
+    flex-direction: column;
   }
 `;
 
@@ -21,23 +22,33 @@ export const DividerMenu = styled.div`
 
 export const LeftContent = styled.div`
   width: 100%;
-  max-width: 22rem;
-  min-width: 240px;
+  max-width: 8rem;
+  min-width: 156px;
   display: flex;
   justify-content: right;
-  margin-top: 68px;
+  margin-block: 68px;
 
+
+
+  @media (max-width: 620px) {
+    margin-left: 20px;
+  }
+
+  @media (max-width: 468px) {
+    justify-content: center;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    margin-top: 16px;
+  }
 `;
 
 export const RightContent = styled.div`
  display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
+  margin-bottom: 60px;
 
-
-  @media (min-width: 1920px) {
-    margin: 0 20rem;
-  }
   @media (max-width: 1600px) {
     width: 100%;
     grid-template-columns: repeat(4, 1fr);
@@ -74,25 +85,11 @@ export const TitleCount = styled.div`
     color: #6e757b;
     font-family: "Montserrat", sans-serif;
   }
+
+  @media (max-width: 468px) {
+    justify-content: center;
+  }
 `;
-
-export const ContainerList = styled.div`
-  border-radius: 20px;
-  padding: 20px 10px;
-  background-color: ${({ theme }) => theme.colors.card};
-  width: 220px;
-  height: 220px;
-  position: relative;
-  margin: 0 auto;
-  display: flex;
-  justify-content:  center;
-
-   > a {
-    text-decoration: none;
-   }
-`;
-
-
 
 //FILTRO
 
@@ -110,9 +107,20 @@ export const Filter = styled.div`
     color: #6e757b;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 704px) {
     width: 90%;
     margin: 0 auto;
+    margin-top: 54px;
+    flex-direction: column;
+  }
+
+  @media (max-width: 442px) {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 54px;
+    margin-bottom: 22px;
+    flex-direction: column;
+    padding: 0;
   }
 
   div {
@@ -148,9 +156,18 @@ export const UlList = styled.ul`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
+  @media (max-width: 468px) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 0;
+    justify-content: center ;
+  }
+
 `;
 
-type PropsLi ={
+type PropsLi = {
   type: any;
   keyAtual: any
 }
@@ -172,21 +189,46 @@ export const LiList = styled.li<PropsLi>`
     list-style: none;
     font-family: "Inter", sans-serif;
   }
+
+  @media (max-width: 468px) {
+    min-width: 110px;
+  }
 `;
 
 
 //CARDS pokemon 
 
-export const Div = styled.div`
+export const ContainerList = styled.div`
+  border-radius: 20px;
+  padding: 20px 10px;
+  background-color: ${({ theme }) => theme.colors.card};
+  width: 220px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+
+   > a {
+    text-decoration: none;
+   }
+`;
+
+type PropsDiv = {
+  backColor: any
+}
+
+export const Div = styled.div<PropsDiv>`
   display: flex;
   justify-content: center;
   background: white;
   border-radius: 100%;
   width: 10rem;
   height: 10rem;
-  border-radius: 50%;
-  position: absolute;
-
+  background: ${props => props.backColor};
+  
 
   img{
     max-width: 100px;
@@ -194,51 +236,37 @@ export const Div = styled.div`
 `;
 
 export const DivTwo = styled.div`
-  display: block;
-
-  > span {
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    text-transform: capitalize;
-    align-items: center;
-    font-weight: 600;
-  }
-
-  .name {
-    background-color: white;
-    border-radius: 5px;
-    color: black;
-  }
-
-  > span:nth-child(2) {
-    position: absolute;
-    top: 5px;
-    left: 15px;
-    font-size: 12px;
-  }
-
-  > div {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-  }
-
-  > #types {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-
-    > span {
-      text-transform: capitalize;
-      padding: 5px 20px;
-      background-color: white;
-      color: black;
-      border-radius: 5px;
-    }
-  }
+  z-index: 10;
 `;
 
 export const ImagePokemon = styled.img`
+`;
+
+//INFORMAÇÕES NO CARD DE POKEMON 
+
+export const PokeInfos = styled.div`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+  font-size: 1.8rem;
+  line-height: 150%;
+  color: #2F3133;
+  text-decoration: none;
+  margin-top: 24px;
   
+  span{
+    display: block;
+    text-align: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    color: #7A7D80;
+  }
+
+  h3{
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+    line-height: 150%;
+    color: #2F3133;
+  }
 `;
