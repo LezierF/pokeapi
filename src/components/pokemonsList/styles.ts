@@ -83,6 +83,13 @@ export const RightContent = styled.div`
 `;
 
 export const RightContainer = styled.div`
+
+  .loading-card{
+    flex-shrink: 0;
+    height: 2rem;
+    width: 100%;
+    margin-top: 1.2rem;
+  }
 `;
 
 export const TitleCount = styled.div`
@@ -300,7 +307,7 @@ export const DivInfoTypeButton = styled.div`
   gap:  10px;
 `;
 
-type SpanTypeProps ={
+type SpanTypeProps = {
   backColor: string
 }
 
@@ -315,4 +322,16 @@ export const SpanTypeInfo = styled.span<SpanTypeProps>`
 export const StyledDivInfos = styled.div`
   width: 100%;
   padding-inline: 20px;
+`;
+
+// SKELETONS E LOADINGS
+
+export const SkeletonCardDiv = styled.div`
+  width: 220px;
+  height: 300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;
