@@ -62,7 +62,7 @@ export const ApiProvider = ({ children }: Props) => {
       .then((response) => response.json())
       .then((json) => {
         var sup = [] as any
-        
+
         json.pokemon.map((item: any) => {
           sup.push(item.pokemon)
         })
@@ -70,10 +70,13 @@ export const ApiProvider = ({ children }: Props) => {
         setCount(sup.length);
 
       })
-      
+
   }
 
   const PromiseShortPokemons = async () => {
+
+    if (type === 0) setCurrPage(1)
+
     const perPage = 10;
     const offset = perPage * (currPage - 1);
 
@@ -96,9 +99,8 @@ export const ApiProvider = ({ children }: Props) => {
   }, [currPage]);
 
   useEffect(() => {
-    if(type === 0) PromiseShortPokemons()
+    if (type === 0) PromiseShortPokemons()
     if (type) PromiseLisTypesPokemon(type)
-    
   }, [type])
 
   return (
