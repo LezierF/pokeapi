@@ -4,7 +4,7 @@ export const defaultTheme = {
       solid: "#F8F9FA",
     },
     secondary: {
-      solid: "#C4C4C4",
+      solid: "#FFF",
     },
     card: "#f7f7f7",
     font: "#403D3D",
@@ -19,7 +19,10 @@ export const defaultTheme = {
 export const darkTheme = {
     colors: {
         primary: {
-            solid: "#252627"
+            solid: "#1B1E1F"
+        },
+        secondary: {
+          solid: "#FFF",
         },
         card: "#403D3D",
         font: "#fff",

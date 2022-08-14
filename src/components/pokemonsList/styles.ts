@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 export const Contents = styled.div`
   display: flex;
-  background: #FFF;
+  background: ${({ theme }) => theme.colors.secondary.solid};
   justify-content: center;
 
   @media (max-width: 468px) {
@@ -105,6 +105,10 @@ export const Filter = styled.div`
     font-weight: bold;
     font-size: 1.4rem;
     color: #6e757b;
+  }
+
+  @media (min-width: 1000px) {
+    margin-inline: 10%;
   }
 
   @media (max-width: 704px) {
