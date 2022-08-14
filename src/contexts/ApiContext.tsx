@@ -17,6 +17,7 @@ type Context = {
   filtered: Object[];
   setType: (value: any) => void;
   type: any;
+  loading: boolean;
 };
 
 const ApiContext = createContext<Context | null>(null);
@@ -25,13 +26,11 @@ export const ApiProvider = ({ children }: Props) => {
   const [currPage, setCurrPage] = useState(0);
   const [count, setCount] = useState<number>(0);
   const [eachPokemon, setEachPokemon] = useState("");
-
+  const [loading, setLoading] = useState(false)
   const [shortPokemonsList, setShortPokemonsList] = useState([]);
   const [allPokemonsList, setAllPokemonsList] = useState([] as any);
   const [search, setSearch] = useState("");
   const [type, setType] = useState(0)
-
-  const [currentPokemon, setCurrentPokemon] = useState([] as any);
 
   const searchByName = search && search.toLowerCase();
   const filtered = !allPokemonsList || !searchByName
@@ -41,34 +40,39 @@ export const ApiProvider = ({ children }: Props) => {
     );
 
   const PromiseListPokemons = async () => {
+    setLoading(true)
     setAllPokemonsList([]);
 
     const urlPokemon = (id: string) =>
       `http://localhost:5050/pokemon/${id}`;
-    shortPokemonsList.forEach(({ name }: any) => {
+    shortPokemonsList.map(({ name }: any) => {
       fetch(urlPokemon(name))
         .then((res) => res.json())
-        .then((data) => setAllPokemonsList((prev: any) => [...prev, data]))
-        .then((each) => setCurrentPokemon(each));
+        .then((data) => {
+          setAllPokemonsList((prev: any) => [...prev, data])
+          setLoading(false)
+          return data
+        })
+        .catch(error =>  console.error(error))
     });
   };
 
   const PromiseLisTypesPokemon = async (type: any) => {
+    setLoading(true)
     setAllPokemonsList([]);
 
     const urlType = `http://localhost:5050/poketype/${type}`;
+    var sup = [] as any
 
     fetch(urlType, { type } as any)
       .then((response) => response.json())
       .then((json) => {
-        var sup = [] as any
-
         json.pokemon.map((item: any) => {
           sup.push(item.pokemon)
         })
-        setShortPokemonsList(sup);
         setCount(sup.length);
-
+        setShortPokemonsList(sup);
+        setLoading(false)
       })
 
   }
@@ -116,7 +120,8 @@ export const ApiProvider = ({ children }: Props) => {
         search,
         filtered,
         setType,
-        type
+        type,
+        loading
       }}
     >
       {children}
