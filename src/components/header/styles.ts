@@ -7,9 +7,7 @@ export const Container = styled.div`
   margin: 0 auto;
   position: relative;
 
-  @media (max-width: 420px) {
-    
-  }
+
 `;
 
 
@@ -65,6 +63,7 @@ export const HeaderContent = styled.div`
     img{
       width: 265px;
     }
+
     @media (max-width: 420px) {
       width: 80px;
       img{
@@ -81,6 +80,14 @@ export const HeaderContent = styled.div`
     }
   }
 
+  @media (max-width: 340px) {
+    > .image {
+    > img {
+      max-width: 80px;
+      max-height: 80px;
+    }
+    }
+
   }
-`;
+}`;
 
