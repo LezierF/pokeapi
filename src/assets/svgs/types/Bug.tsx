@@ -20,7 +20,7 @@ const Bug = (props: SVGProps<SVGSVGElement>) => (
       cy={127.6}
       r={121.6}
       style={{
-        fill: props.fill || "#aaa7a7",
+        fill: props.fill || "#83c300",
       }}
     />
     <path
