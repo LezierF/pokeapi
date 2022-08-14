@@ -1,13 +1,29 @@
 import styled from "styled-components";
 
+export const StyledDiv = styled.div`
+`;
+
+export const StyledH4 = styled.h4`
+`;
+
+export const StyledInput = styled.input`
+`;
+
+export const StyledSpan = styled.span`
+`;
+
+export const StyledH3 = styled.h3`
+`;
+
 export const Container = styled.div`
   * {
     color: ${({ theme }) => theme.colors.font};
   }
 `;
+
 export const Contents = styled.div`
   display: flex;
-  background: ${({ theme }) => theme.colors.secondary.solid};
+  background: ${({ theme }) => theme.colors.background};
   justify-content: center;
 
   @media (max-width: 468px) {
@@ -27,8 +43,6 @@ export const LeftContent = styled.div`
   display: flex;
   justify-content: right;
   margin-block: 68px;
-
-
 
   @media (max-width: 620px) {
     margin-left: 20px;
@@ -82,7 +96,7 @@ export const TitleCount = styled.div`
     margin-left: 10px;
     font-size: 1.2rem;
     line-height: 150%;
-    color: #6e757b;
+    color: ${({ theme }) => theme.colors.font};
     font-family: "Montserrat", sans-serif;
   }
 
@@ -104,7 +118,7 @@ export const Filter = styled.div`
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     font-size: 1.4rem;
-    color: #6e757b;
+    color: ${({ theme }) => theme.colors.font};
   }
 
   @media (min-width: 1000px) {
@@ -233,7 +247,12 @@ export const Div = styled.div<PropsDiv>`
   width: 10rem;
   height: 10rem;
   background: ${props => props.backColor};
-  
+
+  svg{
+    max-width: 140px;
+    max-height: 100%;
+    opacity: 0.6;
+  }
 
   img{
     max-width: 100px;
@@ -254,17 +273,17 @@ export const PokeInfos = styled.div`
   font-weight: 600;
   font-size: 1.8rem;
   line-height: 150%;
-  color: #2F3133;
+  color: ${({ theme }) => theme.font};
   text-decoration: none;
   margin-top: 24px;
   
-  span{
+  span {
     display: block;
     text-align: left;
     font-weight: 600;
     font-size: 14px;
     line-height: 150%;
-    color: #7A7D80;
+    color: ${({ theme }) => theme.font};
   }
 
   h3{
@@ -272,6 +291,28 @@ export const PokeInfos = styled.div`
     font-weight: 600;
     font-size: 1.2rem;
     line-height: 150%;
-    color: #2F3133;
+    color: ${({ theme }) => theme.font};
   }
+`;
+
+export const DivInfoTypeButton = styled.div`
+  display: flex;
+  gap:  10px;
+`;
+
+type SpanTypeProps ={
+  backColor: string
+}
+
+export const SpanTypeInfo = styled.span<SpanTypeProps>`
+  margin-top: 5px;  
+  background: ${props => props.backColor};
+  padding-inline: 10px;
+  border-radius: 10px;
+  color: white;
+`;
+
+export const StyledDivInfos = styled.div`
+  width: 100%;
+  padding-inline: 20px;
 `;

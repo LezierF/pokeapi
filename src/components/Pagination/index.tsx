@@ -15,7 +15,6 @@ export const PaginationComponent = () => {
 
   useEffect(() => {
     setCurrPage(prev => prev === 0 ? 1 : prev);
-    // eslint-disable-next-line 
   }, [])
 
   return (
