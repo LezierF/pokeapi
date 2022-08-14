@@ -7,8 +7,9 @@ import { PaginationComponent } from "../Pagination";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import noImage from "../../assets/pngs/NoImage.png";
 import Bug from '../../assets/svgs/types/bug'
-import { typesList } from "./typesList";
+import { ColorsTypes, typesList } from "./typesList";
 import Pokebola from "../../assets/svgs/types/pokebola";
+import { firstCharToUP, format3Numbers } from "../../helpers";
 
 export const ListPokemons = () => {
 
@@ -51,7 +52,7 @@ export const ListPokemons = () => {
                       keyAtual={item.key}
                     >
                       {<item.iconType width={24} key={item.key} />}
-                      <span >{item.type}</span>
+                      <span style={{color: item.color}}>{item.type}</span>
                     </Styled.LiList>
                   </>
                 )
@@ -77,62 +78,44 @@ export const ListPokemons = () => {
               search.length > 0 ? (
                 filtered.map((item: any, key: any) => {
                   return (
-                    <Styled.ContainerList key={key}>
-                      <Styled.Div>
-                        <div ref={ref} className="keen-slider">
-                          <div className="keen-slider__slide number-slide1" id="slide">
-                            {!!item.sprites.front_default ? (
-                              <img src={item.sprites.front_default} alt="pokemonPics" />
-                            ) : (
-                              <img src={noImage} alt="noimagefound"></img>
-                            )}
-                          </div>
+                    <a style={{textDecoration: 'none'}} href={`/${item.name}`} rel="noreferrer noopener">
+                      <Styled.ContainerList key={key}>
+                        <Styled.Div backColor={ColorsTypes[item.types[0].type.name]}>
+                            <Styled.ImagePokemon src={item.sprites.other.dream_world.front_default}/>
+                        </Styled.Div>
 
-                          <div className="keen-slider__slide number-slide1" id="slide">
-                            <img src={item.sprites.front_shiny} alt="pokemonPics" />
-                          </div>
-                          <div className="keen-slider__slide number-slide1" id="slide">
-                            <img src={item.sprites.back_default} alt="pokemonPics" />
-                          </div>
-                          <div className="keen-slider__slide number-slide1" id="slide">
-                            <img src={item.sprites.back_shiny} alt="pokemonPics" />
-                          </div>
-                        </div>
-                      </Styled.Div>
-                      <a href={`/${item.name}`} rel="noreferrer noopener">
                         <Styled.DivTwo>
-                          <span className="name"> {item.name}</span>
-
-                          <span>
-                            {"#"}
-                            {item.id}
-                          </span>
-                          <div id="sizes">
-                            <span>Peso: {item.weight}kg</span>
-                            <span> Altura: {item.height}m</span>
-                          </div>
-                          <div id="types">
-                            <span> {item.types[0].type.name}</span>
-                            {item.types[1] && <span> {item.types[1].type.name}</span>}
-                          </div>
+                          <Styled.PokeInfos>
+                              <div>
+                                <span>#{format3Numbers(item.id)}</span>
+                                <h3>{firstCharToUP(item.name)}</h3>
+                              </div>
+                          </Styled.PokeInfos>
                         </Styled.DivTwo>
-                      </a>
-                    </Styled.ContainerList>
+
+                      </Styled.ContainerList>
+                    </a>
                   );
                 })
               ) : (
                 allPokemonsList.map((item: any, key: any) => {
 
-                  console.log(item.sprites.other.dream_world.front_default)
                   return (
-                    <a href={`/${item.name}`} rel="noreferrer noopener">
+                    <a style={{textDecoration: 'none'}} href={`/${item.name}`} rel="noreferrer noopener">
                       <Styled.ContainerList key={key}>
-                        <Styled.Div>
+                        <Styled.Div backColor={ColorsTypes[item.types[0].type.name]}>
                             <Styled.ImagePokemon src={item.sprites.other.dream_world.front_default}/>
                         </Styled.Div>
-                        <Styled.DivTwo>
 
+                        <Styled.DivTwo>
+                          <Styled.PokeInfos>
+                              <div>
+                                <span>#{format3Numbers(item.id)}</span>
+                                <h3>{firstCharToUP(item.name)}</h3>
+                              </div>
+                          </Styled.PokeInfos>
                         </Styled.DivTwo>
+
                       </Styled.ContainerList>
                     </a>
                   );

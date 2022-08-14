@@ -6,6 +6,10 @@ export const Container = styled.div`
   background: radial-gradient(circle at bottom, #0a45a4 , #3f9fe4);
   margin: 0 auto;
   position: relative;
+
+  @media (max-width: 420px) {
+    
+  }
 `;
 
 
@@ -57,9 +61,15 @@ export const HeaderContent = styled.div`
     width: 120px;
     display: flex;
     justify-content: center;
-    animation:   ${ Balance()} 2.0s  infinite;
+    animation:   ${Balance()} 2.0s  infinite;
     img{
       width: 265px;
+    }
+    @media (max-width: 420px) {
+      width: 80px;
+      img{
+        width: 230px;
+       }
     }
   }
 
@@ -70,6 +80,7 @@ export const HeaderContent = styled.div`
       max-height: 120px;
     }
   }
+
   }
 `;
 
