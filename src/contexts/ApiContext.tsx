@@ -14,7 +14,9 @@ type Context = {
   eachPokemon: string;
   setSearch: (value: string) => void;
   search: string;
-  filtered: Object[]
+  filtered: Object[];
+  setType: (value: any) => void;
+  type: any;
 };
 
 const ApiContext = createContext<Context | null>(null);
@@ -27,6 +29,7 @@ export const ApiProvider = ({ children }: Props) => {
   const [shortPokemonsList, setShortPokemonsList] = useState([]);
   const [allPokemonsList, setAllPokemonsList] = useState([] as any);
   const [search, setSearch] = useState("");
+  const [type, setType] = useState(0)
 
   const [currentPokemon, setCurrentPokemon] = useState([] as any);
 
@@ -42,7 +45,6 @@ export const ApiProvider = ({ children }: Props) => {
 
     const urlPokemon = (id: string) =>
       `http://localhost:5050/pokemon/${id}`;
-
     shortPokemonsList.forEach(({ name }: any) => {
       fetch(urlPokemon(name))
         .then((res) => res.json())
@@ -50,6 +52,26 @@ export const ApiProvider = ({ children }: Props) => {
         .then((each) => setCurrentPokemon(each));
     });
   };
+
+  const PromiseLisTypesPokemon = async (type: any) => {
+    setAllPokemonsList([]);
+
+    const urlType = `http://localhost:5050/poketype/${type}`;
+
+    fetch(urlType, { type } as any)
+      .then((response) => response.json())
+      .then((json) => {
+        var sup = [] as any
+        
+        json.pokemon.map((item: any) => {
+          sup.push(item.pokemon)
+        })
+        setShortPokemonsList(sup);
+        setCount(sup.length);
+
+      })
+      
+  }
 
   const PromiseShortPokemons = async () => {
     const perPage = 10;
@@ -73,6 +95,12 @@ export const ApiProvider = ({ children }: Props) => {
     if (!!currPage) PromiseShortPokemons();
   }, [currPage]);
 
+  useEffect(() => {
+    if(type === 0) PromiseShortPokemons()
+    if (type) PromiseLisTypesPokemon(type)
+    
+  }, [type])
+
   return (
     <ApiContext.Provider
       value={{
@@ -84,7 +112,9 @@ export const ApiProvider = ({ children }: Props) => {
         eachPokemon,
         setSearch,
         search,
-        filtered
+        filtered,
+        setType,
+        type
       }}
     >
       {children}
