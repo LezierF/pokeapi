@@ -6,9 +6,6 @@ export const Container = styled.div`
   background: radial-gradient(circle at bottom, #0a45a4 , #3f9fe4);
   margin: 0 auto;
   position: relative;
-  box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.56);
-  -webkit-box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.56);
-  -moz-box-shadow: 0px 5px 5px -4px rgba(0,0,0,0.56);
 `;
 
 
