@@ -6,7 +6,7 @@ export const defaultTheme = {
     secondary: {
       solid: "#C4C4C4",
     },
-    card: "#D7DEDC",
+    card: "#f7f7f7",
     font: "#403D3D",
     input: {
       text: "#2873B9",
