@@ -5,6 +5,7 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useApiContext } from "../../contexts/ApiContext";
 import * as Styled from "./styles";
 import Pokebola from "../../assets/svgs/types/pokebola";
+import NoImage from "../../assets/svgs/noimage";
 
 export const ListPokemons = () => {
 
@@ -15,29 +16,35 @@ export const ListPokemons = () => {
     filtered,
     count,
     setType,
-    type
+    type,
+    setCurrPage
   } = useApiContext();
 
   return (
     <Styled.Container>
       <Styled.Filter>
-        <div>
-          <h4>Pesquise seu pokémon</h4>
-        </div>
 
-        <div>
-          <div className="search">
+        <Styled.StyledDiv>
+          <Styled.StyledH4>Pesquise seu pokémon</Styled.StyledH4>
+        </Styled.StyledDiv>
+
+        <Styled.StyledDiv>
+
+          <Styled.StyledDiv className="search">
             <SearchOutlinedIcon />
-          </div>
-          <input
+          </Styled.StyledDiv>
+
+          <Styled.StyledInput
             type="search"
             value={search}
             placeholder='Pesquise um pokémon'
             onChange={(event) => setSearch(event.target.value)}
           />
-        </div>
-        
+
+        </Styled.StyledDiv>
+
       </Styled.Filter>
+
       <Styled.Contents>
         <Styled.LeftContent>
           <Styled.UlList>
@@ -87,10 +94,12 @@ export const ListPokemons = () => {
 
                         <Styled.DivTwo>
                           <Styled.PokeInfos>
-                            <div>
-                              <span>#{format3Numbers(item.id)}</span>
-                              <h3>{firstCharToUP(item.name)}</h3>
-                            </div>
+                            <Styled.StyledDiv>
+
+                              <Styled.StyledSpan>#{format3Numbers(item.id)}</Styled.StyledSpan>
+                              <Styled.StyledH3>{firstCharToUP(item.name)}</Styled.StyledH3>
+
+                            </Styled.StyledDiv>
                           </Styled.PokeInfos>
                         </Styled.DivTwo>
 
@@ -104,17 +113,35 @@ export const ListPokemons = () => {
                     <a style={{ textDecoration: 'none' }} href={`/${item.name}`} rel="noreferrer noopener">
                       <Styled.ContainerList key={key}>
                         <Styled.Div backColor={ColorsTypes[item.types[0].type.name]}>
-                          <Styled.ImagePokemon src={item.sprites.other.dream_world.front_default} />
+                          {
+                            item.sprites.other.dream_world.front_default ? (
+                              <Styled.ImagePokemon src={item.sprites.other.dream_world.front_default} />
+                            ) : (
+                              <NoImage />
+                            )
+                          }
                         </Styled.Div>
 
-                        <Styled.DivTwo>
+                        <Styled.StyledDivInfos>
                           <Styled.PokeInfos>
-                            <div>
-                              <span>#{format3Numbers(item.id)}</span>
-                              <h3>{firstCharToUP(item.name)}</h3>
-                            </div>
+                            <Styled.StyledDiv>
+
+                              <Styled.StyledSpan className="spanID">#{format3Numbers(item.id)}</Styled.StyledSpan>
+                              <Styled.StyledH3>{firstCharToUP(item.name)}</Styled.StyledH3>
+
+                            </Styled.StyledDiv>
+
+                            <Styled.DivInfoTypeButton >
+                              {
+                                item.types.map((item: any) => {
+                                  return (
+                                    <Styled.SpanTypeInfo backColor={ColorsTypes[item.type.name]}>{item.type.name}</Styled.SpanTypeInfo>
+                                  )
+                                })
+                              }
+                            </Styled.DivInfoTypeButton>
                           </Styled.PokeInfos>
-                        </Styled.DivTwo>
+                        </Styled.StyledDivInfos>
 
                       </Styled.ContainerList>
                     </a>
