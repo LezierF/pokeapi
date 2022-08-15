@@ -30,4 +30,4 @@ const Bug = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 )
 
-export default Bug
+export default Bug;
