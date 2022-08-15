@@ -9,13 +9,15 @@ export default function ComboBox() {
 
     const [options, setOption] = React.useState<any[]>([])
 
-    api.get(`/pokemons?perPage=10000&offset=0`).then(({data}) => {
-        let list = [] as any;
-        data.results.forEach( (key: any) => {
-          list.push(key.name);
-        });
-        setOption(list)
-    })
+    React.useEffect(() => {
+        api.get(`/pokemons?perPage=10000&offset=0`).then(({ data }) => {
+            let list = [] as any;
+            data.results.forEach((key: any) => {
+                list.push(key.name);
+            });
+            setOption(list)
+        })
+    }, [])
 
     return (
         <Autocomplete
