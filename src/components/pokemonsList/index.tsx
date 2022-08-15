@@ -1,5 +1,4 @@
 import {  typesList } from "../../helpers/typesList";
-import PaginationComponent  from "../pagination/index";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useApiContext } from "../../contexts/ApiContext";
 import * as Styled from "./styles";
@@ -8,6 +7,7 @@ import NoImage from "../../assets/svgs/noimage";
 import Skeleton from "../skeleton";
 import CardPokemon from "../cardpokemon";
 import AutoCompletInput from '../inputs/AutoComplet'
+import PaginationComponent from "../pagination";
 
 export const ListPokemons = (props: any) => {
 
