@@ -94,6 +94,7 @@ export const DivImage = styled.div<PropsImg>`
 export const DivDetails = styled.div`
     width: 100%;
     padding: 32px 104px;
+    align-self: center;
 
     @media (max-width: 654px) {
         padding: 35px;
@@ -102,7 +103,7 @@ export const DivDetails = styled.div`
 
 export const ImgPokemon = styled.img`
     margin-left: 32px;
-    max-width: 280px;
+    max-width: 275px;
 `;
 
 //RIGHT DETAILS CARD

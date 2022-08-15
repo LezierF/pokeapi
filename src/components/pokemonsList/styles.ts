@@ -62,6 +62,7 @@ export const RightContent = styled.div`
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
   margin-bottom: 60px;
+  
 
   @media (max-width: 1600px) {
     width: 100%;
