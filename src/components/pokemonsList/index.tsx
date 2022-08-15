@@ -1,4 +1,5 @@
 import {  typesList } from "../../helpers/typesList";
+import PaginationComponent  from "../pagination/index";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useApiContext } from "../../contexts/ApiContext";
 import * as Styled from "./styles";
@@ -7,7 +8,6 @@ import NoImage from "../../assets/svgs/noimage";
 import Skeleton from "../skeleton";
 import CardPokemon from "../cardpokemon";
 import AutoCompletInput from '../inputs/AutoComplet'
-
 
 export const ListPokemons = (props: any) => {
 
@@ -108,7 +108,13 @@ export const ListPokemons = (props: any) => {
               )
             }
           </Styled.RightContent>
-
+          {
+            type === 0 && (
+              <Styled.Pag>
+                <PaginationComponent />
+              </Styled.Pag>
+            )
+          }
         </Styled.RightContainer>
       </Styled.Contents>
 
