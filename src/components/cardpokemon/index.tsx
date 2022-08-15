@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import NoImage from '../../assets/svgs/noimage'
 import { firstCharToUP, format3Numbers } from '../../helpers'
 import { ColorsTypes } from '../../helpers/typesList'
-import api from '../../services/api'
+import { api } from '../../services/api'
 import * as Styled from './styles'
 
 const CardPokemon = ({ name }: any) => {

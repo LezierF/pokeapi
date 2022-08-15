@@ -138,6 +138,16 @@ export const LiPersonal = styled.li`
         color: ${({ theme }) => theme.colors.font};
         font-family: "Montserrat",sans-serif;
     }
+
+    ul{
+        li{
+            font-size: 14px;
+            color: ${props => props.color};
+            list-style-type: none;
+            font-family: "Montserrat",sans-serif;
+        }
+    }
+
 `;
 
 export const Loading = styled.div`
@@ -155,4 +165,15 @@ export const LoadingCenter = styled.div`
     align-items: center;
     justify-content: center;
     min-height: calc(100vh - 140px);
+`;
+
+export const Stats = styled.div`
+    margin-top: 50px;
+`;
+
+export const TypeStat = styled.span`
+    font-size: 14px;
+    color: ${props => props.color};
+    list-style-type: none;
+    font-family: "Montserrat",sans-serif;
 `;

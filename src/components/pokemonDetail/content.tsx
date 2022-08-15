@@ -4,14 +4,16 @@ import { useLocation, useParams } from "react-router-dom";
 import { ColorsTypes, typesList } from "../../helpers/typesList";
 import NoImage from "../../assets/svgs/noimage";
 import { firstCharToUP, format3Numbers } from "../../helpers";
-import api from "../../services/api";
+import { api, detaultApi } from "../../services/api";
 import Skeleton from "../skeleton";
 import { useApiContext } from "../../contexts/ApiContext";
+import Slider from '../inputs/Slider'
 
 export const Details: React.FC = () => {
 
   const {setSearch} = useApiContext()
   const [currentPokemon, setCurrentPokemon] = useState({} as any);
+  const [weaknesses, setWeaknesses] = useState<any[]>([]);
   const { name } = useParams()
 
 
@@ -23,8 +25,10 @@ export const Details: React.FC = () => {
         setSearch(res.data.types[0].type.name)
       })
     }
+    
   }, []);
 
+  
 
   return (
     currentPokemon.name ? (
@@ -73,14 +77,40 @@ export const Details: React.FC = () => {
                     <p>{(currentPokemon.weight) / 10}kg</p>
                   </Styled.LiPersonal>
 
-                  <Styled.LiPersonal>
+                  <Styled.LiPersonal color={ColorsTypes[currentPokemon.types[0].type.name]}>
                     <span>Habilidades</span>
-                    <p>0.9m</p>
+                    <ul>
+                      {
+                        currentPokemon.abilities.map((item: any) => {
+                          return (
+                            <li key={item.ability.name}>
+                              {item.ability.name}
+                            </li>
+                          )
+                        })
+                      }
+                    </ul>
                   </Styled.LiPersonal>
+
+                  
 
                 </Styled.UlPersonal>
               </Styled.PersonalInfos>
+              <Styled.Stats>
+                      {
+                        currentPokemon.stats.map((item: {base_stat: number, stat: {name: string}}) => {
 
+                          return (
+                            <>
+                              <Styled.TypeStat>
+                              {item.stat.name}
+                              </Styled.TypeStat>
+                              <Slider value={item.base_stat} />
+                            </>
+                          )
+                        })
+                      }
+                  </Styled.Stats>
 
             </Styled.DivDetails>
 

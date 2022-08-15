@@ -1,7 +1,10 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: 'http://44.202.83.200',
 });
 
-export default api;
+export const detaultApi = axios.create({
+  baseURL: 'https://pokeapi.co/api/v2'
+})
+
