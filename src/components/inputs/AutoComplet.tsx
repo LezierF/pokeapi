@@ -23,10 +23,10 @@ export default function ComboBox() {
             id="combo-box-demo"
             options={options}
             sx={{ width: 300, border: 'none', padding: 0 }}
-            onChange={(event, newToChange) => {
+            onChange={(event: any, newToChange: any) => {
                 window.location.href = `/${newToChange}`
             }}
-            renderInput={(params) => <TextField {...params} label={"Pesquise um pokémon"} />}
+            renderInput={(params: any) => <TextField {...params} label={"Pesquise um pokémon"} />}
         />
     );
 }
