@@ -8,5 +8,5 @@ export const format3Numbers = (num: number) => {
 }
 
 export const firstCharToUP = (value: string) => {
-    return value.charAt(0).toLocaleUpperCase() + value.slice(1);
+    if(value) return value.charAt(0).toLocaleUpperCase() + value.slice(1);
 }

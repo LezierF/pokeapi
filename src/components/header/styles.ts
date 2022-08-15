@@ -1,9 +1,13 @@
 import styled, { keyframes } from "styled-components";
 
-export const Container = styled.div`
+type PropsHeader = { 
+  color?: string
+}
+
+export const Container = styled.div<PropsHeader>`
   height: 140px;
   padding: 35px;
-  background: radial-gradient(circle at bottom, #0a45a4 , #3f9fe4);
+  background: ${props => props.color? props.color :'radial-gradient(circle at bottom, #0a45a4 , #3f9fe4)'};
   margin: 0 auto;
   position: relative;
 
@@ -40,7 +44,7 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   
-  > .image {
+  > a .image {
     > img {
       max-width: 155px;
       max-height: 120px;
@@ -73,7 +77,7 @@ export const HeaderContent = styled.div`
   }
 
   @media (max-width: 560px) {
-    > .image {
+    > a .image {
     > img {
       max-width: 120px;
       max-height: 120px;
@@ -81,7 +85,7 @@ export const HeaderContent = styled.div`
   }
 
   @media (max-width: 340px) {
-    > .image {
+    > a .image {
     > img {
       max-width: 80px;
       max-height: 80px;

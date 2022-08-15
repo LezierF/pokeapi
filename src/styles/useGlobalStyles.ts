@@ -10,9 +10,17 @@ export const GlobalStyle = createGlobalStyle`
   scroll-behavior: smooth;
 }
 
-html,
+html{
+  height: 100%;
+}
+
 body {
   overflow-x: hidden;
+  height: 100%;
+}
+
+#root{
+  height: 100%;
 }
 
 `;
