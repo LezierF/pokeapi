@@ -10,8 +10,6 @@
     * Styled Components
     * material-ui
     * pokedex-api
-    * keen-slider
-
 
 ### `Como usar`
 
@@ -22,3 +20,4 @@
 - No final da página, é possível realizar a paginação dos próximos pokemons, sendo listados 20 pokemons por página.
 - Ao clicar em algum card, será direcionado para o perfil específico do pokemon selecionado.    
 - Ao direcionado será possíve ver o pokemon com animação e suas informações na pokedex.
+
