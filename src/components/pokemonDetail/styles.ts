@@ -6,13 +6,39 @@ export const Container = styled.div`
     min-height: calc(100vh - 140px);
 `;
 
+export const BackPage = styled.div`
+    position: absolute;
+    left: calc(94% /2);
+    margin-top: 22px;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items:center;
+
+    h2{
+        font-family: "Montserrat",sans-serif;
+        color: ${({ theme }) => theme.colors.font};
+    }
+
+    @media (max-width: 1000px) {
+        left: calc(90% /2);
+    }
+
+    
+    @media (max-width: 654px) {
+        margin-top: 10px;
+        left: 15px;
+        margin-left: 10px;
+    }
+`;
+
+
 export const Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center ;
     margin: 0;
     min-height: calc(100vh - 140px);
-
 
 `;
 
@@ -194,4 +220,14 @@ export const TypeStat = styled.span`
     color: ${props => props.color};
     list-style-type: none;
     font-family: "Montserrat",sans-serif;
+`;
+
+export const TitleStats = styled.div`
+    h2{
+        font-weight: 400;
+        margin-bottom: 10px;
+        font-size: 1.3rem;
+        color: ${({ theme }) => theme.colors.font};
+        font-family: "Montserrat",sans-serif;
+    }
 `;
