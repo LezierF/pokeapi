@@ -22,10 +22,6 @@ export const Details: React.FC = () => {
     if (name?.length) {
       api.get(`pokemon/${name}`).then(res => {
         setCurrentPokemon(res.data)
-        console.log(res.data)
-        detaultApi.get(`/evolution-chain/${res.data.id}`).then(res => {
-          console.log("res,", res)
-        })
         setSearch(res.data.types[0].type.name)
       })
     }
