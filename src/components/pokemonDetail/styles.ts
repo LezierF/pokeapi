@@ -12,6 +12,8 @@ export const Content = styled.div`
     align-items: center ;
     margin: 0;
     min-height: calc(100vh - 140px);
+
+
 `;
 
 
@@ -25,6 +27,12 @@ export const CardDetailPokemon = styled.div`
     background: ${({ theme }) => theme.colors.background};
     border-radius: 20px;
     display: flex;
+
+    @media (max-width: 654px) {
+        flex-direction: column;
+        height: 100%;
+        margin-block: 42px;
+    }
 `;
 
 //LEFT CARD IMAGE
@@ -48,12 +56,22 @@ export const DivImage = styled.div<PropsImg>`
         opacity: 0.6;
         margin: 5px;
     }
+
+    @media (max-width: 654px) {
+        flex-direction: column;
+        border-radius: 20px 20px 0 0;
+        max-width: 100%;
+    }
     
 `;
 
 export const DivDetails = styled.div`
     width: 100%;
     padding: 32px 104px;
+
+    @media (max-width: 654px) {
+        padding: 35px;
+    }
 `;
 
 export const ImgPokemon = styled.img`
