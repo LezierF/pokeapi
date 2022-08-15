@@ -1,7 +1,7 @@
 import * as React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import api from '../../services/api';
+import { api } from '../../services/api';
 import { ColorsTypes } from '../../helpers/typesList';
 
 export default function ComboBox() {
@@ -22,11 +22,11 @@ export default function ComboBox() {
             disablePortal
             id="combo-box-demo"
             options={options}
-            sx={{ width: 300 }}
+            sx={{ width: 300, border: 'none', padding: 0 }}
             onChange={(event, newToChange) => {
                 window.location.href = `/${newToChange}`
             }}
-            renderInput={(params) => <TextField {...params} label={"Pokémon"} />}
+            renderInput={(params) => <TextField {...params} label={"Pesquise um pokémon"} />}
         />
     );
 }
