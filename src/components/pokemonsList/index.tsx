@@ -7,7 +7,7 @@ import NoImage from "../../assets/svgs/noimage";
 import Skeleton from "../skeleton";
 import CardPokemon from "../cardpokemon";
 import AutoCompletInput from '../inputs/AutoComplet'
-import PaginationComponent from "../pagination";
+
 
 export const ListPokemons = (props: any) => {
 
@@ -108,13 +108,7 @@ export const ListPokemons = (props: any) => {
               )
             }
           </Styled.RightContent>
-          {
-            type === 0 && (
-              <Styled.Pag>
-                <PaginationComponent />
-              </Styled.Pag>
-            )
-          }
+
         </Styled.RightContainer>
       </Styled.Contents>
 
