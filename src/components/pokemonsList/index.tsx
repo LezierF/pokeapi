@@ -1,5 +1,5 @@
 import {  typesList } from "../../helpers/typesList";
-import { PaginationComponent } from "../pagination/index";
+import PaginationComponent  from "../pagination/index";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useApiContext } from "../../contexts/ApiContext";
 import * as Styled from "./styles";

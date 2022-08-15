@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useApiContext } from "../../contexts/ApiContext";
 import { useTheme } from "../../contexts/useTheme";
 
-export const PaginationComponent = () => {
+const PaginationComponent = () => {
   const { setCurrPage, count } = useApiContext();
 
   const handleCurrPage = (_: any, page: number) => {
@@ -23,3 +23,5 @@ export const PaginationComponent = () => {
     </Stack>
   );
 };
+
+export default PaginationComponent
