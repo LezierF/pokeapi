@@ -1,5 +1,4 @@
-import { firstCharToUP, format3Numbers } from "../../helpers";
-import { ColorsTypes, typesList } from "../../helpers/typesList";
+import {  typesList } from "../../helpers/typesList";
 import { PaginationComponent } from "../pagination";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import { useApiContext } from "../../contexts/ApiContext";
