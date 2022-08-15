@@ -1,204 +1,158 @@
 import styled from "styled-components";
 
-const ContainerContent = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary.solid};
-  height: 100%;
-
-  #anchor {
-    border: 1px solid black;
-    text-decoration: none;
-    border: 2px solid #333;
-    border-radius: 5px;
-    font-weight: 600;
-    color: #3a444d;
-    font-size: clamp(8px, 5vw, 1rem);
-    box-shadow: -3px 4px 0 #888, -2px 1px 0 #333;
-    position: absolute;
-    top: -20px;
-    left: 30%;
-    background-color: #fff;
-    padding: 2px 5px;
-
-    @media (max-width: 1500px) {
-      left: 25%;
-    }
-    @media (max-width: 1100px) {
-      left: 15%;
-    }
-    @media (max-width: 900px) {
-      left: 10%;
-    }
-    @media (max-width: 600px) {
-      left: 45%;
-      top: -35px;
-    }
-  }
+export const Container = styled.div`
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 140px);
 `;
 
-const Container = styled.div`
-  background-color: ${({ theme }) => theme.colors.primary.solid};
-  height: 100%;
-  min-height: 799px;
-  position: relative;
-
-  * {
-    @font-face {
-      font-family: "Pokemon Pixel Font Regular";
-      src: url("./pokemon_pixel_font.ttf");
-      font-weight: normal;
-      font-style: normal;
-    }
-  }
-
-  .cont {
+export const Content = styled.div`
     display: flex;
-    width: 300px;
     justify-content: center;
-    margin: 0 auto;
-    position: relative;
-
-    > span:nth-child(1) {
-      font-size: 22px;
-      position: absolute;
-      color: black;
-      text-transform: capitalize;
-      z-index: 2;
-      opacity: 0.8;
-      font-weight: 600;
-      right: 0;
-    }
-    > span:nth-child(2) {
-      position: absolute;
-      font-size: 20px;
-      color: #313131;
-      top: 200px;
-    }
-  }
+    align-items: center ;
+    margin: 0;
+    min-height: calc(100vh - 140px);
 `;
 
-const ImgContainer = styled.div`
-  width: 500px;
-  margin: 0 auto;
-  z-index: 1;
-  position: relative;
 
-  > img {
-    width: 500px;
-    @media (max-width: 500px) {
-      width: 450px;
-      margin: 0 auto;
-    }
-    @media (max-width: 400px) {
-      width: 380px;
-      margin: 0 auto;
-    }
-  }
-
-  > span {
-    position: absolute;
-    top: 165px;
-    left: 60px;
-    font-weight: bold;
-
-    @media (max-width: 400px) {
-      top: 125px;
-      right: 86px;
-    }
-  }
-
-  > h1 {
-    position: absolute;
-
-    outline: none;
-    border: 2px solid #333;
-    border-radius: 5px;
-    font-weight: 600;
-    color: #3a444d;
-    font-size: clamp(8px, 5vw, 1rem);
-    box-shadow: -3px 4px 0 #888, -5px 3px 0 #333;
-    background-color: white;
-    text-transform: capitalize;
-    right: 100px;
-    top: 100px;
-    padding: 5px 10px;
-
-    @media (max-width: 400px) {
-      top: 75px;
-      right: 90px;
-    }
-  }
+export const CardDetailPokemon = styled.div`
+    margin: 0;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    width: 100%;
+    height: 100%;
+    max-width: 50rem;
+    height: 40.8rem;
+    background: ${({ theme }) => theme.colors.background};
+    border-radius: 20px;
+    display: flex;
 `;
 
-const FloatPokemon = styled.div`
-  position: absolute;
-  top: 250px;
-  right: 210px;
+//LEFT CARD IMAGE
 
-  @media (max-width: 500px) {
-    top: 205px;
-    right: 180px;
-  }
+type PropsImg = {
+    backColor: string
+}
 
-  @media (max-width: 400px) {
-    top: 185px;
-    right: 160px;
-  }
+export const DivImage = styled.div<PropsImg>`
+    background: ${props => props.backColor};
+    height: 100%;
+    width: 100%;
+    max-width: 13rem;
+    border-radius: 20px 0 0 20px;
+    display: flex;
+    align-items: center;
+    
 
-  > img {
-    width: 100px;
-
-    @media (max-width: 400px) {
-      width: 80px;
+    svg{
+        max-width: 380px;
+        opacity: 0.6;
+        margin: 5px;
     }
-  }
-`;
-const Info = styled.div`
-  position: absolute;
-  z-index: 20;
+    
 `;
 
-const ContentInfos = styled.div`
-  max-height: 100px;
-  height: 100%;
-  max-width: 290px;
-  background: white;
-  z-index: 20;
-  position: relative;
-  bottom: 150px;
-  left: 110px;
-  outline: none;
-  border: 2px solid #333;
-  border-radius: 5px;
-  font-weight: 600;
-  color: #3a444d;
-  font-size: clamp(8px, 5vw, 1rem);
-  box-shadow: -3px 4px 0 #888, -5px 7px 0 #333;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 10px;
+export const DivDetails = styled.div`
+    width: 100%;
+    padding: 32px 104px;
+`;
 
-  @media (max-width: 500px) {
-    max-width: 230px;
-    left: 100px;
-  }
-  @media (max-width: 400px) {
-    max-width: 200px;
-    left: 100px;
-    bottom: 130px;
-  }
+export const ImgPokemon = styled.img`
+    margin-left: 32px;
+    max-width: 280px;
+`;
 
-  ul {
-    > li {
-      list-style-type: none;
+//RIGHT DETAILS CARD
+
+export const NameAndId = styled.div`
+    display: flex;
+    align-items: baseline;
+
+
+    h2{
+        font-weight: bold;
+        font-size: 2.2rem;
+        line-height: 3.4rem;
+        text-align: start;
+        letter-spacing: -0.01em;
+        color: ${({ theme }) => theme.colors.font};
+        margin-right: 0.8rem;
+        font-family: "Montserrat",sans-serif;
+
     }
-  }
+
+    span{
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 150%;
+        color: ${({ theme }) => theme.colors.font};
+    }   
+    
 `;
 
-export const Sty = {
-  ContainerContent,
-  Container,
-  FloatPokemon,
-  ImgContainer,
-  Info,
-  ContentInfos,
+export const TypesButtons = styled.div`
+    display: flex;
+    gap: 10px;
+`
+
+type SpanTypeProps = {
+    backColor: string,
 };
+
+export const SpanTypeInfo = styled.span<SpanTypeProps>`
+  margin-top: 5px;  
+  background: ${props => props.backColor};
+  padding-inline: 15px;
+  font-size: 14px;
+  padding-block: 4px;
+  border-radius: 10px;
+  font-weight: 600;
+  color: white;
+  font-family: "Montserrat",sans-serif;
+`;
+
+export const PersonalInfos = styled.div`
+
+`;
+
+export const UlPersonal = styled.ul`
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 18px;
+
+`;
+
+export const LiPersonal = styled.li`
+    list-style-type: none;
+
+    span{
+        font-weight: 200;
+        font-size: 1rem;
+        color: ${({ theme }) => theme.colors.font};
+        font-family: "Montserrat",sans-serif;
+    }
+
+    p{
+        font-weight: 400;
+        font-size: 1.3rem;
+        color: ${({ theme }) => theme.colors.font};
+        font-family: "Montserrat",sans-serif;
+    }
+`;
+
+export const Loading = styled.div`
+    width: 100%;
+    height: 100%;
+    max-width: 50rem;
+    height: 40.8rem;
+    display: flex;
+`;
+
+export const LoadingCenter = styled.div`
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    min-height: calc(100vh - 140px);
+`;
