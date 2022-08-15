@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const api = axios.create({
-  baseURL: 'http://44.202.83.200',
+  baseURL: 'https://backend-pokeapi.herokuapp.com/',
 });
 
 export const detaultApi = axios.create({
