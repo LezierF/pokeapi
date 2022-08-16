@@ -11,21 +11,23 @@ import StatusBar from '../inputs/StatusBar'
 import ButtonPrev from "../../assets/svgs/buttonPrev"
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 export const Details: React.FC = () => {
 
-  const { setSearch } = useApiContext()
+  const { setSearch, setLoading } = useApiContext()
+  setLoading(true)
   const [currentPokemon, setCurrentPokemon] = useState({} as any);
   const [evolutions, setEvolutions] = useState<any[]>([]);
   const { name } = useParams()
   const history =
 
     useEffect(() => {
+      setCurrentPokemon({})
       if (name?.length) {
         api.get(`pokemon/${name}`).then(res => {
           setCurrentPokemon(res.data)
           setSearch(res.data.types[0].type.name)
+          setLoading(false)
         })
       }
 

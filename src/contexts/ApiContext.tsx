@@ -17,6 +17,7 @@ type Context = {
   setType: (value: any) => void;
   type: any;
   loading: boolean;
+  setLoading: (value: boolean) => void
 };
 
 export const ApiContext = createContext<Context | null>(null);
@@ -86,7 +87,8 @@ export const ApiProvider = ({ children }: Props) => {
         setType,
         type,
         loading,
-        allPokemonsTypeList
+        allPokemonsTypeList,
+        setLoading
       }}
     >
       {children}
