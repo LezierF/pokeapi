@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as Styled from './styles'
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ColorsTypes } from "../../helpers/typesList";
 import NoImage from "../../assets/svgs/noimage";
 import { firstCharToUP, format3Numbers } from "../../helpers";
@@ -9,6 +9,9 @@ import Skeleton from "../skeleton";
 import { useApiContext } from "../../contexts/ApiContext";
 import StatusBar from '../inputs/StatusBar'
 import ButtonPrev from "../../assets/svgs/buttonPrev"
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 
 export const Details: React.FC = () => {
 
@@ -16,17 +19,17 @@ export const Details: React.FC = () => {
   const [currentPokemon, setCurrentPokemon] = useState({} as any);
   const [evolutions, setEvolutions] = useState<any[]>([]);
   const { name } = useParams()
-  const history = 
+  const history =
 
-  useEffect(() => {
-    if (name?.length) {
-      api.get(`pokemon/${name}`).then(res => {
-        setCurrentPokemon(res.data)
-        setSearch(res.data.types[0].type.name)
-      })
-    }
+    useEffect(() => {
+      if (name?.length) {
+        api.get(`pokemon/${name}`).then(res => {
+          setCurrentPokemon(res.data)
+          setSearch(res.data.types[0].type.name)
+        })
+      }
 
-  }, []);
+    }, [name]);
 
 
 
@@ -42,6 +45,13 @@ export const Details: React.FC = () => {
         </Styled.BackPage>
 
         <Styled.Content>
+
+          <Link to={currentPokemon.id > 1 ? `/${currentPokemon.id - 1}?${ColorsTypes[currentPokemon.types[0].type.name]}` : ''} style={{ textDecoration: 'none' }}>
+            <Styled.LeftArrow color={ColorsTypes[currentPokemon.types[0].type.name]}>
+              <ArrowBackIosNewIcon />
+            </Styled.LeftArrow>
+          </Link>
+
           <Styled.CardDetailPokemon>
 
             <Styled.DivImage backColor={ColorsTypes[currentPokemon.types[0].type.name]}>
@@ -125,7 +135,17 @@ export const Details: React.FC = () => {
             </Styled.DivDetails>
 
           </Styled.CardDetailPokemon>
+
+          <Link to={currentPokemon.id  ? `/${currentPokemon.id + 1}?${ColorsTypes[currentPokemon.types[0].type.name]}` : ''} style={{ textDecoration: 'none' }}>
+            <Styled.RightArrow color={ColorsTypes[currentPokemon.types[0].type.name]}>
+              <ArrowForwardIosIcon />
+            </Styled.RightArrow>
+          </Link>
+
         </Styled.Content>
+
+
+
       </Styled.Container>
     ) : (
       <Styled.LoadingCenter>

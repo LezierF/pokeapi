@@ -232,3 +232,63 @@ export const TitleStats = styled.div`
         font-family: "Montserrat",sans-serif;
     }
 `;
+
+//ARROWS PARA PROXIMO E ANTERIOR POKEMON
+
+export const RightArrow = styled.div`
+    cursor: pointer;
+
+    :hover{
+        svg{
+            font-size: 60px;
+            margin-left: -10px;
+        }
+    }
+
+    svg{
+        font-size: 50px;
+        color: ${props => props.color};
+    }
+
+    @media (max-width: 720px) {
+        position: absolute;
+        right: 0;
+        top: 240px;
+        svg{
+            font-size: 40px;
+        }
+    }
+
+    @media (max-width: 654px) {
+        svg{
+            color: white;
+        }
+    }
+
+
+`;
+
+export const LeftArrow = styled.div`
+    cursor: pointer;
+    :hover{
+        svg{
+            font-size: 60px;
+            margin-right: -10px;
+        }
+    }
+
+    svg{
+        font-size: 50px;
+        color: ${props => props.color};
+    }
+
+    @media (max-width: 720px) {
+        position: absolute;
+        left: 0;
+        top: 240px;
+        svg{
+            font-size: 40px;
+            color: white;
+        }
+    }
+`;
