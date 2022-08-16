@@ -39,12 +39,14 @@ export const Details: React.FC = () => {
     currentPokemon.name ? (
       <Styled.Container>
 
-        <Styled.BackPage onClick={() => window.history.go(-1)}>
-          <ButtonPrev
-            color={ColorsTypes[currentPokemon.types[0].type.name]}
-          />
-          <h2 style={{ color: ColorsTypes[currentPokemon.types[0].type.name] }}>Voltar</h2>
-        </Styled.BackPage>
+        <Link to={'/'}>
+          <Styled.BackPage>
+            <ButtonPrev
+              color={ColorsTypes[currentPokemon.types[0].type.name]}
+            />
+            <h2 style={{ color: ColorsTypes[currentPokemon.types[0].type.name] }}>Pokédex</h2>
+          </Styled.BackPage>
+        </Link>
 
         <Styled.Content>
 
@@ -138,7 +140,7 @@ export const Details: React.FC = () => {
 
           </Styled.CardDetailPokemon>
 
-          <Link to={currentPokemon.id  ? `/${currentPokemon.id + 1}?${ColorsTypes[currentPokemon.types[0].type.name]}` : ''} style={{ textDecoration: 'none' }}>
+          <Link to={currentPokemon.id ? `/${currentPokemon.id + 1}?${ColorsTypes[currentPokemon.types[0].type.name]}` : ''} style={{ textDecoration: 'none' }}>
             <Styled.RightArrow color={ColorsTypes[currentPokemon.types[0].type.name]}>
               <ArrowForwardIosIcon />
             </Styled.RightArrow>

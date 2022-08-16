@@ -38,7 +38,6 @@ export const ApiProvider = ({ children }: Props) => {
     setLoading(true)
 
     const response = await api.get(`/poketype/${type}`);
-    console.log(response.data.pokemon)
     setAllPokemonsTypeList(response.data.pokemon)
     setLoading(false)
 
@@ -56,7 +55,6 @@ export const ApiProvider = ({ children }: Props) => {
 
     const getPokemons = await api.get(`pokemons?perPage=${perPage}&offset=${offset}`)
     setAllPokemonsList(getPokemons.data.results)
-    console.log(getPokemons.data.results)
     setCount(Math.floor(getPokemons.data.count / perPage))
     setLoading(false)
 
