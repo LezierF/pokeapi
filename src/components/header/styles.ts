@@ -1,19 +1,19 @@
 import styled, { keyframes } from "styled-components";
 
-type PropsHeader = { 
-  color?: string
-}
+type PropsHeader = {
+  color?: string;
+};
 
 export const Container = styled.div<PropsHeader>`
   height: 140px;
   padding: 35px;
-  background: ${props => props.color? props.color :'radial-gradient(circle at bottom, #0a45a4 , #3f9fe4)'};
+  background: ${(props) =>
+    props.color
+      ? props.color
+      : "radial-gradient(circle at bottom, #0a45a4 , #3f9fe4)"};
   margin: 0 auto;
   position: relative;
-
-
 `;
-
 
 const Balance = () => {
   const balance = keyframes`
@@ -33,17 +33,15 @@ const Balance = () => {
     }
   `;
 
-  return balance
-}
-
-
+  return balance;
+};
 
 export const HeaderContent = styled.div`
   position: relative;
   border-top: none;
   display: flex;
   justify-content: space-between;
-  
+
   > a .image {
     > img {
       max-width: 155px;
@@ -59,39 +57,38 @@ export const HeaderContent = styled.div`
     justify-content: center;
   }
 
-  > .pokeblu{
+  > .pokeblu {
     width: 120px;
     display: flex;
     justify-content: center;
-    animation:   ${Balance()} 2.0s  infinite;
-    img{
+    animation: ${Balance()} 2s infinite;
+    img {
       width: 265px;
     }
 
     @media (max-width: 420px) {
       width: 80px;
-      img{
+      img {
         width: 230px;
-       }
+      }
     }
   }
 
   @media (max-width: 560px) {
     > a .image {
-    > img {
-      max-width: 120px;
-      max-height: 120px;
+      > img {
+        max-width: 120px;
+        max-height: 120px;
+      }
+    }
+
+    @media (max-width: 340px) {
+      > a .image {
+        > img {
+          max-width: 80px;
+          max-height: 80px;
+        }
+      }
     }
   }
-
-  @media (max-width: 340px) {
-    > a .image {
-    > img {
-      max-width: 80px;
-      max-height: 80px;
-    }
-    }
-
-  }
-}`;
-
+`;
