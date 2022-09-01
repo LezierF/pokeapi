@@ -127,10 +127,6 @@ export const Details: React.FC = () => {
                 (item: { base_stat: number; stat: { name: string } }) => {
                   return (
                     <>
-                      {/* <Styled.TypeStat>
-                          {item.stat.name}
-                        </Styled.TypeStat> */}
-                      {/* <Slider value={item.base_stat} /> */}
                       <StatusBar
                         numbers={item.base_stat}
                         typeStatus={item.stat.name}
