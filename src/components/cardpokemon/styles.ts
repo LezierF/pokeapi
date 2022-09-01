@@ -29,7 +29,6 @@ export const ContainerList = styled.div`
   justify-content: center;
   align-items: center;
   
-
    > a {
     text-decoration: none;
    }
