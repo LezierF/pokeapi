@@ -9,19 +9,23 @@ const PaginationComponent = () => {
 
   const handleCurrPage = (_: any, page: number) => {
     setCurrPage(page);
-  }
+  };
 
-  const { isDarkMode } = useTheme()
+  const { isDarkMode } = useTheme();
 
   useEffect(() => {
-    setCurrPage(prev => prev === 0 ? 1 : prev);
-  }, [])
+    setCurrPage((prev) => (prev === 0 ? 1 : prev));
+  }, []);
 
   return (
     <Stack spacing={2}>
-      <Pagination count={count} color={isDarkMode ? "secondary" : "primary" } onChange={handleCurrPage}/>
+      <Pagination
+        count={count}
+        color={isDarkMode ? "secondary" : "primary"}
+        onChange={handleCurrPage}
+      />
     </Stack>
   );
 };
 
-export default PaginationComponent
+export default PaginationComponent;
