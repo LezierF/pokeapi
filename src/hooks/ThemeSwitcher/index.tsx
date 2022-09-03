@@ -2,7 +2,6 @@ import { FiMoon, FiSun } from "react-icons/fi";
 import ReactSwitch from "react-switch";
 import { useTheme } from "../../contexts/useTheme";
 
-
 export const ThemeSwitcher: React.FC = () => {
   const { switchTheme, isDarkMode } = useTheme();
 
