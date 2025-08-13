@@ -21,3 +21,4 @@
 - Ao clicar em algum card, será direcionado para o perfil específico do pokemon selecionado.    
 - Ao direcionado será possíve ver o pokemon com animação e suas informações na pokedex.
 
+
